@@ -26,11 +26,16 @@ export const Cart = () => {
 
             {
                 cart.length === 0 ? (
-                    <div>
-                        <h1>Cart Empty</h1>
+                    <div className='flex flex-col h-screen justify-center items-center gap-11'>
+                        <h1 className='font-semibold text-5xl font-mono'>Cart is Empty</h1>
                         <Link to={"/"}>
-                            <button>
-                                Shop Now
+                            <button className='inline-flex overflow-hidden text-white bg-gray-900 rounded group'>
+                                <span className="px-3.5 py-3 text-white bg-purple-500 group-hover:bg-green-600 flex items-center justify-center">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                    </svg>
+                                </span>
+                                <span className="pl-4 pr-5 py-2.5 font-semibold">Shop Now</span>
                             </button>
                         </Link>
                     </div>
@@ -62,11 +67,11 @@ export const Cart = () => {
                             <div className='flex flex-col items-start mb-16 ml-2 gap-5'>
                                 <p className='font-semibold text-xl'>Total Amount : <span className='font-bold'>${totalAmount}</span></p>
 
-                                <button 
-                                onClick={checkout}
-                                className="px-16 py-3 rounded-full relative bg-slate-700 text-white text-sm hover:shadow-2xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
+                                <button
+                                    onClick={checkout}
+                                    className="px-16 py-3 rounded-full relative bg-slate-700 text-white text-sm hover:shadow-2xl hover:bg-black transition duration-200 border border-slate-600">
                                     <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl  bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
-                                    <span className="relative z-20">
+                                    <span className="relative z-20 font-semibold">
                                         Checkout Now
                                     </span>
                                 </button>
