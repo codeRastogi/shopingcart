@@ -7,9 +7,9 @@ const Home = () => {
 
     const API_URL = "https://fakestoreapi.com/products"
 
-    const[loading, setLoading] = useState(false);
-    const[posts, setPosts] = useState([]);
-     async function getData(){
+    const [loading, setLoading] = useState(false);
+    const [posts, setPosts] = useState([]);
+    async function getData() {
         setLoading(true);
 
         try {
@@ -21,36 +21,48 @@ const Home = () => {
 
             console.log("Errrrrrrrror");
             setPosts([]);
-            
+
         }
         setLoading(false);
-     }
+    }
 
-     useEffect(() => {
+    useEffect(() => {
         getData();
-     }, [])
-
-     console.log(posts)
+    }, [])
 
 
-  return (
-    <div>
-        {
-            loading ? (
-                <ClockLoader
-                size = {200}
-                color = 'black'
-                />
-            ) : (
-                posts.length === 0? (<p>No data Found</p>) : (
-                   posts.map((post) => {
-                    return <Product key={post.id} post={post}/>
-                   })
+
+
+    return (
+        <div>
+            {
+                loading ? (
+                    <div className='h-[90vh] flex flex-col items-center justify-center'>
+                        <ClockLoader
+                        size={200}
+                    />
+                    </div>
+                    
+                ) : (
+                    posts.length === 0 ? (
+                    <div className='flex justify-center items-center'>
+                        <p>No data Found</p>
+                    </div>
+
+                    ) : (
+                        <div className='grid grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh] gap-3'> 
+                            {
+                                posts.map((post) => (
+                                    <Product key={post.id} post={post} />
+                                ))
+                            }
+                        </div>
+
+                    )
                 )
-            )
-        }
-    </div>
-  )
+            }
+        </div>
+    )
 }
 
 export default Home

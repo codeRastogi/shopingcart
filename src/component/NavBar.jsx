@@ -3,28 +3,42 @@ import { IoCartOutline } from "react-icons/io5";
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 const NavBar = () => {
-  const{cart} = useSelector((state) => state);
+  const { cart } = useSelector((state) => state);
   return (
-    <div className='flex items-center justify-center'>
-        <div className='flex flex-row justify-between w-[80%]'>
-            <NavLink to={"/"}>
-            <img src='../logo.png' width={100} alt='logo'/>
-            </NavLink>
+    <div>
+      <nav className='flex flex-row justify-between items-center h-20 max-w-6xl mx-auto'>
+        <NavLink to={"/"}>
+          <div className='ml-5'>
 
-            <NavLink to={"/"}>
+            <img src='../logo.png' width={150} alt='logo' />
+
+          </div>
+
+        </NavLink>
+        <div className='flex items-center font-medium text-slate-100 mr-5 space-x-6'>
+
+          <NavLink to={"/"}>
             <p>Home</p>
-            </NavLink>
+          </NavLink>
 
-            <NavLink to={"/cart"}>
-            <div>
-            <span>{cart.length}</span>
-            <IoCartOutline/>
+          <NavLink to={"/cart"}>
+            <div className='relative'>
+              <IoCartOutline className='text-2xl'/>
+
+              {
+                cart.length > 0 &&
+                <span className='absolute -top-1 -right-2 bg-green-600 text-xs
+                w-5 h-5 flex justify-center item-center animate-bounce rounded-full text-white'>{cart.length}</span>
+              }
             </div>
-            
-            </NavLink>
-            
-            
+
+          </NavLink>
+
         </div>
+
+
+
+      </nav>
 
     </div>
   )
